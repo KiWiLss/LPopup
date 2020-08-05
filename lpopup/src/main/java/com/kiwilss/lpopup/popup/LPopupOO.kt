@@ -42,6 +42,8 @@ class LPopupOO(activity: Activity, layoutId:Int = R.layout.pw_oo, private val ca
         }
     }
 
+    fun getView(id: Int): View = contentView.findViewById(id)
+
 
 
     override fun setContent(contentView: View) {

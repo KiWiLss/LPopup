@@ -34,8 +34,6 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
     private var wm: WindowManager? = null
     private var maskView: View? = null
 
-
-
     init {
         initType()
         activity.run {
