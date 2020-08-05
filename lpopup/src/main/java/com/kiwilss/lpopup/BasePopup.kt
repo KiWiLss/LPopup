@@ -11,13 +11,14 @@
 
 package com.kiwilss.lpopup
 
+import android.R
 import android.annotation.TargetApi
 import android.app.Activity
+import android.content.Context
+import android.graphics.PixelFormat
 import android.graphics.drawable.ColorDrawable
-import android.view.Gravity
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
+import android.os.IBinder
+import android.view.*
 import android.widget.PopupWindow
 
 /**
@@ -30,10 +31,15 @@ import android.widget.PopupWindow
 abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWindow(activity) {
 
     private var isMask = true //背景是否有阴影
+    private var wm: WindowManager? = null
+    private var maskView: View? = null
+
+
 
     init {
         initType()
         activity.run {
+            wm = getSystemService(Context.WINDOW_SERVICE) as WindowManager
             contentView = layoutInflater.inflate(layout,null)
             //设置内容
             setContent(contentView)
@@ -145,7 +151,7 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
         y: Int
     ) {
         if (isMask) {
-            setScreenMaskView(0.5f)
+            addMaskView(parent.windowToken)
         }
         super.showAtLocation(parent, gravity, x, y)
     }
@@ -157,7 +163,7 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
     ) {
         width = ViewGroup.LayoutParams.WRAP_CONTENT
         if (isMask) {
-            setScreenMaskView(0.5f)
+            addMaskView(anchor.windowToken)
         }
         super.showAsDropDown(anchor, xoff, yoff)
     }
@@ -168,7 +174,7 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
 
     override fun dismiss() {
         if (isMask) {
-            setScreenMaskView(1f)
+            removeMaskView()
         }
         super.dismiss()
     }
@@ -184,5 +190,36 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
         //  解决华为手机在home建进入后台后，在进入应用，蒙层出现在popupWindow上层的bug。
         //  android4.0及以上版本都有这个hide方法，根据jvm原理，可以直接调用，选择android6.0版本进行编译即可。
         windowLayoutType = WindowManager.LayoutParams.TYPE_APPLICATION_SUB_PANEL
+    }
+
+    private  fun addMaskView(token: IBinder) {
+        val p = WindowManager.LayoutParams()
+        p.width = WindowManager.LayoutParams.MATCH_PARENT
+        p.height = WindowManager.LayoutParams.MATCH_PARENT
+        p.format = PixelFormat.TRANSLUCENT
+        p.type = WindowManager.LayoutParams.TYPE_APPLICATION_PANEL
+        p.token = token
+        p.windowAnimations = R.style.Animation_Toast
+        maskView = View(activity)
+        maskView!!.setBackgroundColor(0x7f000000)
+        //  maskView.setFitsSystemWindows(false);
+        // 华为手机在home建进入后台后，在进入应用，蒙层出现在popupWindow上层，导致界面卡死，
+        // 这里新增加按bug返回。
+        // initType方法已经解决该问题，但是还是留着这个按back返回功能，防止其他手机出现华为手机类似问题。
+        maskView!!.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                removeMaskView()
+                return@OnKeyListener true
+            }
+            false
+        })
+        wm?.addView(maskView, p)
+    }
+
+    private  fun removeMaskView() {
+        if (maskView != null) {
+            wm?.removeViewImmediate(maskView)
+            maskView = null
+        }
     }
 }
