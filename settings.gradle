@@ -1,0 +1,3 @@
+include ':lpopup'
+include ':app'
+rootProject.name = "LPopup"
