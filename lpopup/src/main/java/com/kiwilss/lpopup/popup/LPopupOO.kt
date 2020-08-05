@@ -28,8 +28,11 @@ import kotlinx.android.synthetic.main.pw_oo.view.*
 class LPopupOO(activity: Activity, layoutId:Int = R.layout.pw_oo, private val callback: ClickCallBack)
     : BasePopup(activity,layoutId) {
 
+    /**
+     * 设置标题相关
+     * @param title String
+     */
     fun setTitle(title: String){
-
         contentView?.tv_pw_oo_title?.run {
             if (TextUtils.isEmpty(title)) {
                 text = "提示"
@@ -38,6 +41,7 @@ class LPopupOO(activity: Activity, layoutId:Int = R.layout.pw_oo, private val ca
             }
         }
     }
+
 
 
     override fun setContent(contentView: View) {

@@ -14,6 +14,7 @@ package com.kiwilss.lpopup.common
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.kiwilss.lpopup.R
+
 import com.kiwilss.lpopup.popup.LPopupOO
 import kotlinx.android.synthetic.main.activity_common.*
 
