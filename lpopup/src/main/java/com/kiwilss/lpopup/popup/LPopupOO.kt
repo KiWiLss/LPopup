@@ -28,29 +28,29 @@ import kotlinx.android.synthetic.main.pw_oo.view.*
 class LPopupOO(activity: Activity, layoutId:Int = R.layout.pw_oo, private val callback: ClickCallBack)
     : BasePopup(activity,layoutId) {
 
-    /**
-     * 设置标题相关
-     * @param title String
-     */
+    //设置标题
+    lateinit var mTitle: String
+
     fun setTitle(title: String){
-        contentView?.tv_pw_oo_title?.run {
-            if (TextUtils.isEmpty(title)) {
-                text = "提示"
-            }else{
-                text = title
-            }
-        }
+        mTitle = title
     }
 
     fun getView(id: Int): View = contentView.findViewById(id)
 
 
-
-    override fun setContent(contentView: View) {
+    override fun setInterface() {
+        contentView?.tv_pw_oo_title?.run {
+            if (!TextUtils.isEmpty(mTitle)) {
+                text = mTitle
+            }
+        }
+        //contentView.tv_pw_oo_title.setTextSize()
         contentView.tv_pw_oo_sure.setOnClickListener {
             callback.click(this)
         }
     }
+
+
 
     abstract class ClickCallBack{
         abstract fun click(lPopupOO: LPopupOO)

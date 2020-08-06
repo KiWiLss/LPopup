@@ -3,19 +3,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
     <LinearLayout
-        android:id="@+id/ll_pw_oo_outer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginHorizontal="@dimen/m30"
         android:background="@drawable/bg_white_fillet_10"
+        android:layout_marginHorizontal="@dimen/m30"
         >
         <!--标题-->
         <TextView
-            android:id="@+id/tv_pw_oo_title"
+            android:id="@+id/tv_pw_to_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hint"
@@ -23,13 +20,23 @@
             android:textColor="@color/black"
             android:layout_gravity="center_horizontal"
             android:padding="@dimen/m15"/>
-
-        <View
-            android:id="@+id/v_pw_oo_line"
-            style="@style/View_line"/>
-
         <TextView
-            android:id="@+id/tv_pw_oo_sure"
+            android:id="@+id/tv_pw_to_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hint"
+            android:textSize="@dimen/s15"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/m25"
+            android:layout_marginTop="@dimen/m5"
+            android:layout_marginHorizontal="@dimen/m15"
+            />
+        <View
+            style="@style/View_line"/>
+        <TextView
+            android:id="@+id/tv_pw_to_sure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sure"
@@ -41,6 +48,4 @@
 
 
     </LinearLayout>
-
-
 </LinearLayout>

@@ -14,9 +14,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="一个标题,一个按钮"/>
-
+            <Button
+                android:id="@+id/btn_common_oo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="一个标题,一个按钮2"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_common_ot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="一个标题,二个按钮"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

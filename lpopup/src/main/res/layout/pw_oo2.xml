@@ -6,37 +6,38 @@
 
 
     <LinearLayout
-        android:id="@+id/ll_pw_oo_outer"
-        android:layout_width="match_parent"
+        android:id="@+id/ll_pw_oo_outer2"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="vertical"
-        android:layout_marginHorizontal="@dimen/m30"
+        android:layout_marginHorizontal="30dp"
         android:background="@drawable/bg_white_fillet_10"
         >
         <!--标题-->
         <TextView
-            android:id="@+id/tv_pw_oo_title"
+            android:id="@+id/tv_pw_oo_title2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hint"
-            android:textSize="@dimen/s18"
+            android:text="@string/app_name"
+            android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_gravity="center_horizontal"
-            android:padding="@dimen/m15"/>
+            android:padding="15dp"/>
 
         <View
-            android:id="@+id/v_pw_oo_line"
+            android:id="@+id/v_pw_oo_line2"
             style="@style/View_line"/>
 
         <TextView
-            android:id="@+id/tv_pw_oo_sure"
+            android:id="@+id/tv_pw_oo_sure2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sure"
-            android:textSize="@dimen/s15"
+            android:textSize="15sp"
             android:textColor="@color/black"
             android:gravity="center"
-            android:padding="@dimen/m15"
+            android:padding="15dp"
             android:background="?attr/selectableItemBackground"/>
 
 

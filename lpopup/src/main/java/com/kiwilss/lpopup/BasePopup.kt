@@ -39,8 +39,8 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
         activity.run {
             wm = getSystemService(Context.WINDOW_SERVICE) as WindowManager
             contentView = layoutInflater.inflate(layout,null)
-            //设置内容
-            setContent(contentView)
+//            //设置内容
+//            setContent(contentView)
             width = ViewGroup.LayoutParams.MATCH_PARENT
             height = ViewGroup.LayoutParams.WRAP_CONTENT
             //默认设置点击外部区域消失
@@ -48,7 +48,7 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
         }
     }
 
-    abstract fun setContent(contentView: View)
+    //abstract fun setContent(contentView: View)
 
     fun setIsMask(isMask: Boolean) {
         this.isMask = isMask
@@ -151,8 +151,11 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
         if (isMask) {
             addMaskView(parent.windowToken)
         }
+        setInterface()
         super.showAtLocation(parent, gravity, x, y)
     }
+
+    abstract fun setInterface()
 
     override fun showAsDropDown(
         anchor: View,
@@ -163,6 +166,7 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
         if (isMask) {
             addMaskView(anchor.windowToken)
         }
+        setInterface()
         super.showAsDropDown(anchor, xoff, yoff)
     }
 
