@@ -18,6 +18,7 @@ import com.kiwilss.lpopup.BasePopup
 import com.kiwilss.lpopup.R
 import com.kiwilss.lpopup.callback.LoCallback
 import kotlinx.android.synthetic.main.pw_oo.view.*
+import kotlinx.android.synthetic.main.pw_to.view.*
 
 /**
  *@FileName: Ltopopup
@@ -59,7 +60,7 @@ class Ltopopup private constructor(builder: Builder) :
         callback = builder.callback
     }
 
-    class Builder(val activity: Activity, val layoutId: Int = R.layout.pw_oo) {
+    class Builder(val activity: Activity, val layoutId: Int = R.layout.pw_to) {
         var title: String? = null
         var titleSize: Int = 0
         var titleColor: Int = 0
@@ -145,39 +146,49 @@ class Ltopopup private constructor(builder: Builder) :
     override fun setInterface() {
         contentView?.let {
             title?.run {
-                it.tv_pw_oo_title?.text = this
+                it.tv_pw_to_title?.text = this
             }
             if (titleSize != 0) {
-                it.tv_pw_oo_title?.textSize = titleSize.toFloat()
+                it.tv_pw_to_title?.textSize = titleSize.toFloat()
             }
             if (titleColor != 0) {
-                it.tv_pw_oo_title?.setTextColor(titleColor)
+                it.tv_pw_to_title?.setTextColor(titleColor)
+            }
+            titleIsBold?.run {
+                if (this) {
+                    it.tv_pw_to_title?.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
+                }
+            }
+            subtitle?.run {
+                it.tv_pw_to_subtitle?.text = this
+            }
+            if (subtitleSize != 0) {
+                it.tv_pw_to_subtitle?.textSize = subtitleSize.toFloat()
+            }
+            if (subtitleColor != 0) {
+                it.tv_pw_to_subtitle?.setTextColor(subtitleColor)
             }
             if (outerBg != 0) {
-                it.ll_pw_oo_outer?.setBackgroundResource(outerBg)
+                it.ll_pw_to_outer?.setBackgroundResource(outerBg)
             }
             btnText?.run {
-                it.tv_pw_oo_sure?.text = this
+                it.tv_pw_to_sure?.text = this
             }
             if (btnSize != 0) {
-                it.tv_pw_oo_sure?.textSize = btnSize.toFloat()
+                it.tv_pw_to_sure?.textSize = btnSize.toFloat()
             }
             if (btnColor != 0) {
-                it.tv_pw_oo_sure?.setTextColor(btnColor)
+                it.tv_pw_to_sure?.setTextColor(btnColor)
             }
             callback?.run {
-                it.tv_pw_oo_sure?.setOnClickListener {
+                it.tv_pw_to_sure?.setOnClickListener {
                     click(this@Ltopopup)
                 }
             }
             if (btnBg != 0) {
-                it.tv_pw_oo_sure?.setBackgroundResource(btnBg)
+                it.tv_pw_to_sure?.setBackgroundResource(btnBg)
             }
-            titleIsBold?.run {
-                if (this) {
-                    it.tv_pw_oo_title?.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
-                }
-            }
+
         }
     }
 

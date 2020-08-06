@@ -26,6 +26,11 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/btn_common_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="二个标题,一个按钮"/>
+            <Button
                 android:id="@+id/btn_common_ot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

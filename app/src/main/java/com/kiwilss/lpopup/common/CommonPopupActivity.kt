@@ -23,6 +23,7 @@ import com.kiwilss.lpopup.callback.LtCallback
 import com.kiwilss.lpopup.popup.LPopupOO
 import com.kiwilss.lpopup.popup.Loopopup
 import com.kiwilss.lpopup.popup.Lotpopup
+import com.kiwilss.lpopup.popup.Ltopopup
 import kotlinx.android.synthetic.main.activity_common.*
 
 
@@ -80,6 +81,17 @@ class CommonPopupActivity : AppCompatActivity() {
                         super.left(loopopup)
                         Toast.makeText(this@CommonPopupActivity, "left", Toast.LENGTH_SHORT).show()
                     }
+                })
+                .build()
+                .showCenter()
+        }
+        btn_common_to.setOnClickListener {
+            Ltopopup.Builder(this)
+                .callback(object :LoCallback{
+                    override fun click(loopopup: BasePopup?) {
+                        loopopup?.dismiss()
+                    }
+
                 })
                 .build()
                 .showCenter()

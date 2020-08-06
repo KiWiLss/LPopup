@@ -50,23 +50,26 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
 
     //abstract fun setContent(contentView: View)
 
-    fun setIsMask(isMask: Boolean) {
+    fun setIsMask(isMask: Boolean) : BasePopup{
         this.isMask = isMask
+        return this
     }
 
-    fun setPopupWidth(width: Int) {
+    fun setPopupWidth(width: Int) : BasePopup{
         setWidth(width)
+        return this
     }
 
-    fun setPopupHeight(height: Int) {
+    fun setPopupHeight(height: Int) : BasePopup{
         setHeight(height)
+        return this
     }
     /**
      * 设置是否点击外部区域消失
      *
      * @param isDismiss
      */
-    fun setIsClickDismiss(isDismiss: Boolean) {
+    fun setIsClickDismiss(isDismiss: Boolean): BasePopup {
         if (isDismiss) {
             isOutsideTouchable = true
             isFocusable = true
@@ -76,6 +79,7 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
             isFocusable = false
             isTouchable = true
         }
+        return this
     }
 
     /**
