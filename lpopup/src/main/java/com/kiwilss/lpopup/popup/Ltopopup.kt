@@ -13,12 +13,14 @@ package com.kiwilss.lpopup.popup
 
 import android.app.Activity
 import android.graphics.Typeface
+import android.util.TypedValue
 import androidx.core.content.ContextCompat
 import com.kiwilss.lpopup.BasePopup
 import com.kiwilss.lpopup.R
 import com.kiwilss.lpopup.callback.LoCallback
 import kotlinx.android.synthetic.main.pw_oo.view.*
 import kotlinx.android.synthetic.main.pw_to.view.*
+import kotlinx.android.synthetic.main.pw_tt.view.*
 
 /**
  *@FileName: Ltopopup
@@ -149,7 +151,7 @@ class Ltopopup private constructor(builder: Builder) :
                 it.tv_pw_to_title?.text = this
             }
             if (titleSize != 0) {
-                it.tv_pw_to_title?.textSize = titleSize.toFloat()
+                it.tv_pw_to_title?.setTextSize(TypedValue.COMPLEX_UNIT_PX,titleSize.toFloat())
             }
             if (titleColor != 0) {
                 it.tv_pw_to_title?.setTextColor(titleColor)
@@ -163,7 +165,7 @@ class Ltopopup private constructor(builder: Builder) :
                 it.tv_pw_to_subtitle?.text = this
             }
             if (subtitleSize != 0) {
-                it.tv_pw_to_subtitle?.textSize = subtitleSize.toFloat()
+                it.tv_pw_to_subtitle?.setTextSize(TypedValue.COMPLEX_UNIT_PX,subtitleSize.toFloat())
             }
             if (subtitleColor != 0) {
                 it.tv_pw_to_subtitle?.setTextColor(subtitleColor)
@@ -175,7 +177,7 @@ class Ltopopup private constructor(builder: Builder) :
                 it.tv_pw_to_sure?.text = this
             }
             if (btnSize != 0) {
-                it.tv_pw_to_sure?.textSize = btnSize.toFloat()
+                it.tv_pw_to_sure?.setTextSize(TypedValue.COMPLEX_UNIT_PX,btnSize.toFloat())
             }
             if (btnColor != 0) {
                 it.tv_pw_to_sure?.setTextColor(btnColor)

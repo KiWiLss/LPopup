@@ -13,6 +13,7 @@ package com.kiwilss.lpopup.popup
 
 import android.app.Activity
 import android.graphics.Typeface
+import android.util.TypedValue
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import com.kiwilss.lpopup.BasePopup
@@ -20,6 +21,7 @@ import com.kiwilss.lpopup.R
 import com.kiwilss.lpopup.callback.LtCallback
 import kotlinx.android.synthetic.main.pw_oo.view.*
 import kotlinx.android.synthetic.main.pw_ot.view.*
+import kotlinx.android.synthetic.main.pw_to.view.*
 
 /**
  *@FileName: Lotpopup
@@ -143,7 +145,7 @@ class Lotpopup private constructor(builder: Builder): BasePopup(builder.activity
                 it.tv_pw_ot_title?.text = this
             }
             if (titleSize != 0) {
-                it.tv_pw_ot_title?.textSize = titleSize.toFloat()
+                it.tv_pw_ot_title?.setTextSize(TypedValue.COMPLEX_UNIT_PX,titleSize.toFloat())
             }
             if (titleColor != 0) {
                 it.tv_pw_ot_title?.setTextColor(titleColor)
@@ -155,7 +157,7 @@ class Lotpopup private constructor(builder: Builder): BasePopup(builder.activity
                 it.tv_pw_ot_cancel?.text = this
             }
             if (leftSize != 0) {
-                it.tv_pw_ot_cancel?.textSize = leftSize.toFloat()
+                it.tv_pw_ot_cancel?.setTextSize(TypedValue.COMPLEX_UNIT_PX,leftSize.toFloat())
             }
             if (leftColor != 0) {
                 it.tv_pw_ot_cancel?.setTextColor(leftColor)
@@ -167,7 +169,7 @@ class Lotpopup private constructor(builder: Builder): BasePopup(builder.activity
                 it.tv_pw_ot_sure?.text = this
             }
             if (rightSize != 0) {
-                it.tv_pw_ot_sure?.textSize = rightSize.toFloat()
+                it.tv_pw_ot_sure?.setTextSize(TypedValue.COMPLEX_UNIT_PX,rightSize.toFloat())
             }
             if (rightColor != 0) {
                 it.tv_pw_ot_sure?.setTextColor(rightColor)

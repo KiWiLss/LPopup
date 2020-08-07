@@ -59,7 +59,7 @@ class CommonPopupActivity : AppCompatActivity() {
 
         //简单的一个标题,一个按钮对话框封装后使用示例
         btn_common_oo2?.setOnClickListener {
-            Lttpopup.Builder(this)
+            val pp = Lttpopup.Builder(this)
                 .title("任意标题")
                 .titleColor(R.color.colorAccent)
                 .titleSize(R.dimen.s15)
@@ -81,7 +81,8 @@ class CommonPopupActivity : AppCompatActivity() {
 
                 })
                 .build()
-                .showCenter()
+                    //pp.animationStyle = R.style.AnimFadeCenter
+                pp.showCenter()
         }
         btn_common_ot.setOnClickListener {
             Lotpopup.Builder(this)

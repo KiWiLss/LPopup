@@ -11,6 +11,7 @@
 
 package com.kiwilss.lpopup.easy
 
+
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
@@ -22,6 +23,7 @@ import android.view.View.OnTouchListener
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.PopupWindow
 import androidx.core.widget.PopupWindowCompat
+import com.kiwilss.lpopup.R
 
 
 /**
@@ -84,7 +86,8 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
     /**
      * 设置动画效果
     */
-    fun setAnimStyle(): EasyPopup{
+    fun setAnimStyle(animStyle: Int): EasyPopup{
+        mAnimationStyle = animStyle
         return this
     }
 
@@ -217,15 +220,19 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
     }
 
     fun showCenter() {
+        //设置渐入渐出动画
+        animationStyle = R.style.AnimFadeCenter
         showAtLocation(activity.window.decorView, Gravity.CENTER, 0, 0)
     }
 
     fun showBottom() {
         //设置底部弹出动画
+        animationStyle = R.style.PushInBottom
         showAtLocation(activity.window.decorView, Gravity.BOTTOM, 0, 0)
     }
 
     fun showTop() {
+        animationStyle = R.style.PushInTop
         showAtLocation(activity.window.decorView, Gravity.TOP, 0, 0)
     }
 
@@ -241,13 +248,16 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
     /**展示之前的设置
      */
     private fun showBeforeSet() {
-        setInterface()
+        if (mAnimationStyle != -1){
+            animationStyle = mAnimationStyle
+        }
         if (isMask) {
             showBackgroundAnimator()
         }
         if (isAddGlable) {
             addGlobalLayoutListener(contentView)
         }
+        setInterface()
     }
 
     /**
@@ -423,6 +433,7 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
         val window = activity.window
         val layoutParams = window.attributes
         layoutParams.alpha = alpha
+        //layoutParams.windowAnimations = R.style.AnimFadeCenter
         window.attributes = layoutParams
     }
 }

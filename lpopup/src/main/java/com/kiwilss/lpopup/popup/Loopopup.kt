@@ -13,12 +13,14 @@ package com.kiwilss.lpopup.popup
 
 import android.app.Activity
 import android.graphics.Typeface
+import android.util.TypedValue
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.kiwilss.lpopup.BasePopup
 import com.kiwilss.lpopup.R
 import com.kiwilss.lpopup.callback.LoCallback
 import kotlinx.android.synthetic.main.pw_oo.view.*
+import kotlinx.android.synthetic.main.pw_ot.view.*
 
 /**
  *@FileName: LpopupOO2
@@ -127,7 +129,7 @@ class Loopopup private constructor(builder: Builder) :
                 it.tv_pw_oo_title?.text = this
             }
             if (titleSize != 0) {
-                it.tv_pw_oo_title?.textSize = titleSize.toFloat()
+                it.tv_pw_oo_title?.setTextSize(TypedValue.COMPLEX_UNIT_PX,titleSize.toFloat())
             }
             if (titleColor != 0) {
                 it.tv_pw_oo_title?.setTextColor(titleColor)
@@ -139,7 +141,7 @@ class Loopopup private constructor(builder: Builder) :
                 it.tv_pw_oo_sure?.text = this
             }
             if (btnSize != 0) {
-                it.tv_pw_oo_sure?.textSize = btnSize.toFloat()
+                it.tv_pw_oo_sure?.setTextSize(TypedValue.COMPLEX_UNIT_PX,btnSize.toFloat())
             }
             if (btnColor != 0) {
                 it.tv_pw_oo_sure?.setTextColor(btnColor)

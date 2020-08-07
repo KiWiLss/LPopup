@@ -11,7 +11,7 @@
 
 package com.kiwilss.lpopup
 
-import android.R
+
 import android.annotation.TargetApi
 import android.app.Activity
 import android.content.Context
@@ -33,7 +33,7 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
     private var isMask = true //背景是否有阴影
     private var wm: WindowManager? = null
     private var maskView: View? = null
-
+    private var mAnimationStyle: Int = 0//对话框动画
     init {
         initType()
         activity.run {
@@ -52,6 +52,10 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
 
     //abstract fun setContent(contentView: View)
 
+    fun setAnimationStyle2(animation: Int): BasePopup{
+        mAnimationStyle = animationStyle
+        return this
+    }
     fun setIsMask(isMask: Boolean) : BasePopup{
         this.isMask = isMask
         return this
@@ -89,6 +93,7 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
      * 显示在界面的底部
      */
     fun showBottom() {
+        animationStyle = R.style.PushInBottom
         showAtLocation(
             activity.window.decorView,
             Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL,
@@ -97,18 +102,11 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
         )
     }
 
-    fun showBottom(activity: Activity?) {
-        if (activity != null) {
-            showAtLocation(
-                activity.window.decorView,
-                Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL,
-                0,
-                0
-            )
-        }
-    }
+
 
     fun showCenter() {
+        //设置渐入渐出动画
+        animationStyle = R.style.AnimFadeCenter
         showAtLocation(
             activity.window.decorView,
             Gravity.CENTER or Gravity.CENTER_HORIZONTAL,
@@ -117,18 +115,10 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
         )
     }
 
-    fun showCenter(activity: Activity?) {
-        if (activity != null) {
-            showAtLocation(
-                activity.window.decorView,
-                Gravity.CENTER or Gravity.CENTER_HORIZONTAL,
-                0,
-                0
-            )
-        }
-    }
+
 
     fun showTop() {
+        animationStyle = R.style.PushInTop
         showAtLocation(
             activity.window.decorView,
             Gravity.TOP or Gravity.CENTER_HORIZONTAL,
@@ -137,16 +127,6 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
         )
     }
 
-    fun showTop(activity: Activity?) {
-        if (activity != null) {
-            showAtLocation(
-                activity.window.decorView,
-                Gravity.TOP or Gravity.CENTER_HORIZONTAL,
-                0,
-                0
-            )
-        }
-    }
 
     override fun showAtLocation(
         parent: View,
@@ -156,6 +136,9 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
     ) {
         if (isMask) {
             addMaskView(parent.windowToken)
+        }
+        if (mAnimationStyle != 0){
+            animationStyle = mAnimationStyle
         }
         setInterface()
         super.showAtLocation(parent, gravity, x, y)
@@ -171,6 +154,9 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
         width = ViewGroup.LayoutParams.WRAP_CONTENT
         if (isMask) {
             addMaskView(anchor.windowToken)
+        }
+        if (mAnimationStyle != 0){
+            animationStyle = mAnimationStyle
         }
         setInterface()
         super.showAsDropDown(anchor, xoff, yoff)
@@ -207,7 +193,7 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
         p.format = PixelFormat.TRANSLUCENT
         p.type = WindowManager.LayoutParams.TYPE_APPLICATION_PANEL
         p.token = token
-        p.windowAnimations = R.style.Animation_Toast
+        p.windowAnimations = R.style.AnimFadeCenter
         maskView = View(activity)
         maskView!!.setBackgroundColor(0x7f000000)
         //  maskView.setFitsSystemWindows(false);
