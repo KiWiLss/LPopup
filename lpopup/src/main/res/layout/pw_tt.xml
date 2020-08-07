@@ -5,7 +5,7 @@
 
 
     <LinearLayout
-        android:id="@+id/ll_pw_twotitle_outer"
+        android:id="@+id/ll_pw_tt_outer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cancel"
-                android:textSize="@dimen/m15"
+                android:textSize="@dimen/s15"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:padding="@dimen/m15"

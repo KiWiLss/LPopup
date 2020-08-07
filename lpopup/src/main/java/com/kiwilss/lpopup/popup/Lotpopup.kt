@@ -13,6 +13,7 @@ package com.kiwilss.lpopup.popup
 
 import android.app.Activity
 import android.graphics.Typeface
+import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import com.kiwilss.lpopup.BasePopup
 import com.kiwilss.lpopup.R
@@ -125,7 +126,7 @@ class Lotpopup private constructor(builder: Builder): BasePopup(builder.activity
             this.rightColor = ContextCompat.getColor(activity,rightColor)
             return this
         }
-        fun rightBg(rightBg: Int): Builder {
+        fun rightBg(@DrawableRes rightBg: Int): Builder {
             this.rightBg = rightBg
             return this
         }

@@ -26,7 +26,7 @@ import android.widget.PopupWindow
  *@author : Lss Administrator
  * @e-mail : kiwilss@163.com
  * @time   : 2020/8/5
- * @desc   : {DESCRIPTION}
+ * @desc   : {集成对话框,阴影效果在部分手机上无法覆盖状态栏,当菜单类型使用位置不好控制}
  */
 abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWindow(activity) {
 
@@ -47,6 +47,8 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
             setIsClickDismiss(true)
         }
     }
+    //对外提供获取内部控件的方法
+    fun getView(viewId: Int): View? = contentView?.findViewById(viewId)
 
     //abstract fun setContent(contentView: View)
 

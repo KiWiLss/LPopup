@@ -11,6 +11,7 @@
 package com.kiwilss.lpopup.callback
 
 import com.kiwilss.lpopup.BasePopup
+import com.kiwilss.lpopup.easy.EasyPopup
 import com.kiwilss.lpopup.popup.Loopopup
 
 /**
@@ -20,6 +21,6 @@ import com.kiwilss.lpopup.popup.Loopopup
  * @time   : 2020/8/6
  * @desc   : {DESCRIPTION}
  */
-interface LoCallback {
-    fun click(loopopup: BasePopup?)
+interface LoCallback2 {
+    fun click(loopopup: EasyPopup?)
 }

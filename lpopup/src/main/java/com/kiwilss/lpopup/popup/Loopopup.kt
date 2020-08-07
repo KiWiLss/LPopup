@@ -54,7 +54,7 @@ class Loopopup private constructor(builder: Builder) :
     }
 
     //对外提供获取内部控件的方法
-    fun getView(viewId: Int): View? = contentView?.findViewById(viewId)
+    //override fun getView(viewId: Int): View? = contentView?.findViewById(viewId)
 
     class Builder(val activity: Activity, val layoutId: Int = R.layout.pw_oo) {
         var title: String? = null
