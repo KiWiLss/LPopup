@@ -311,7 +311,7 @@ class CommonPopupActivity : AppCompatActivity() {
 //                .setAnimStyle()//设置动画
                 .showCenter()
         }
-        //EasyPopup 菜单样式示例,
+        //EasyPopup 菜单样式示例
         btn_common_menu.setOnClickListener {
             EasyMenuDemo(this)
                 .setIsMask(false)//设置是否有阴影
