@@ -97,9 +97,10 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
     @SuppressLint("ClickableViewAccessibility")
     fun setIsTouchOutsideDimiss(isTouchOutsideDimiss: Boolean) : EasyPopup{
         if (!isTouchOutsideDimiss) {
-            isFocusable = true
+            isFocusable = false
             isOutsideTouchable = false
-            setBackgroundDrawable(ColorDrawable())
+            isTouchable = true
+            //setBackgroundDrawable(ColorDrawable())
             contentView.isFocusable = true
             contentView.isFocusableInTouchMode = true
             contentView.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
@@ -110,20 +111,20 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
                 false
             })
             //在Android 6.0以上 ，只能通过拦截事件来解决
-            setTouchInterceptor(OnTouchListener { v, event ->
-                val x = event.x.toInt()
-                val y = event.y.toInt()
-                if (event.action == MotionEvent.ACTION_DOWN
-                    && (x < 0 || x >= mWidth || y < 0 || y >= mHeight)
-                ) {
-                    //outside
-                    return@OnTouchListener true
-                } else if (event.action == MotionEvent.ACTION_OUTSIDE) {
-                    //outside
-                    return@OnTouchListener true
-                }
-                false
-            })
+//            setTouchInterceptor(OnTouchListener { v, event ->
+//                val x = event.x.toInt()
+//                val y = event.y.toInt()
+//                if (event.action == MotionEvent.ACTION_DOWN
+//                    && (x < 0 || x >= mWidth || y < 0 || y >= mHeight)
+//                ) {
+//                    //outside
+//                    return@OnTouchListener true
+//                } else if (event.action == MotionEvent.ACTION_OUTSIDE) {
+//                    //outside
+//                    return@OnTouchListener true
+//                }
+//                false
+//            })
         } else {
             isFocusable = true
             isOutsideTouchable = true

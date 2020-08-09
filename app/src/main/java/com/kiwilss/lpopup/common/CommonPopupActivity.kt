@@ -21,8 +21,7 @@ import com.kiwilss.lpopup.callback.LoCallback
 import com.kiwilss.lpopup.callback.LoCallback2
 import com.kiwilss.lpopup.callback.LtCallback
 import com.kiwilss.lpopup.callback.LtCallback2
-import com.kiwilss.lpopup.common.pp.ChoiceHeadPw
-import com.kiwilss.lpopup.common.pp.GravityMenu
+import com.kiwilss.lpopup.common.pp.*
 import com.kiwilss.lpopup.easy.EasyPopup
 import com.kiwilss.lpopup.easy.HorizontalPosition
 import com.kiwilss.lpopup.easy.VerticalPosition
@@ -53,10 +52,14 @@ class CommonPopupActivity : AppCompatActivity() {
         //简单的一个标题,一个按钮对话框使用示例
         btn_common_oo.setOnClickListener {
             Loopopup.Builder(this)
-                .title("builder 模式")
-                .titleColor(R.color.colorAccent)
+                .title("builder 模式")//设置标题
+                .titleColor(R.color.colorAccent)//标题颜色
                 .titleIsBold(true)//设置加粗
-                .outerBg(R.drawable.bg_white_fillet_20)
+                .outerBg(R.drawable.bg_white_fillet_20)//对话框背景
+//                .btnText()//按钮文字
+//                .btnSize()//按钮文字大小
+//                .btnColor()//按钮文字颜色
+//                .btnBg()//按钮背景
                 .clickCallBack(object : LoCallback {
                     override fun click(loopopup: BasePopup?) {
                         loopopup?.dismiss()
@@ -67,7 +70,7 @@ class CommonPopupActivity : AppCompatActivity() {
                 .showCenter()
         }
 
-        //简单的一个标题,一个按钮对话框封装后使用示例
+        //简单的2个标题,2个按钮对话框封装后使用示例
         btn_common_oo2?.setOnClickListener {
             val pp = Lttpopup.Builder(this)
                 .title("任意标题")
@@ -250,9 +253,11 @@ class CommonPopupActivity : AppCompatActivity() {
                 .showBottom()
         }
         //精准控制对话框显示的位置,原生 PopupWindow 位置不好控制,默认在下方
+        //这种类型弹出默认没有动画效果,可以直接根据弹出位置选择合适的动画
         btn_common_gravity.setOnClickListener {//居中下方显示
             GravityMenu(this)
                 .setIsMask(false)//设置是否需要阴影,默认有阴影
+                //.setAnimStyle(R.style.AnimFadeCenter)//设置动画效果
                 //.setIsTouchOutsideDimiss()//设置点击外部是否消失,默认可以消失
                 .showAtAnchorView(btn_common_gravity,VerticalPosition.BELOW,HorizontalPosition.CENTER)
         }
@@ -279,6 +284,40 @@ class CommonPopupActivity : AppCompatActivity() {
             GravityMenu(this)
                 .setIsMask(false)//设置是否需要阴影,默认有阴影
                 .showAtAnchorView(btn_common_gravity,VerticalPosition.BELOW,HorizontalPosition.RIGHT)
+        }
+        //下拉对话框
+        btn_common_pull.setOnClickListener {
+            PullPw(this)
+                .setAnimStyle(R.style.GrowFromTop)//设置动画
+                .setIsMask(false)//设置没有阴影
+                .setIsTouchOutsideDimiss(false)//设置点击外部不能消失
+                .showAsDropDown(btn_common_pull)//显示在这个控件的底部
+        }
+        //basepopup 使用示例
+        btn_common_base.setOnClickListener {
+            BasePopupDemo(this)
+//                .setIsMask()//设置是否有阴影
+//                .setIsClickDismiss()//设置点击外部是否消失
+//                .setPopupWidth()//设置对话框宽度
+//                .setPopupHeight()//设置对话框高度
+//                .setAnimationStyle2()//设置对话框展示动画
+                .showCenter()
+        }
+        //EasyPopup 使用示例
+        btn_common_easy.setOnClickListener {
+            EasyPopupDemo(this)
+//                .setIsMask()//设置是否有阴影
+//                .setIsTouchOutsideDimiss()//设置点击外部是否消失
+//                .setAnimStyle()//设置动画
+                .showCenter()
+        }
+        //EasyPopup 菜单样式示例
+        btn_common_menu.setOnClickListener {
+            EasyMenuDemo(this)
+                .setIsMask(false)//设置是否有阴影
+                //.setIsTouchOutsideDimiss()//设置点击外部是否消失
+                .setAnimStyle(R.style.PopDownRightMenu)//设置动画
+                .showAsDropDown(btn_common_menu)
         }
     }
 }
