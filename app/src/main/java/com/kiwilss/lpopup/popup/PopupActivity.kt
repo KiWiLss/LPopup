@@ -19,6 +19,7 @@ import android.widget.PopupWindow
 import androidx.appcompat.app.AppCompatActivity
 import com.kiwilss.lpopup.R
 import com.kiwilss.lpopup.Utils
+import com.kiwilss.lpopup.x.normal.Xttpopup
 import kotlinx.android.synthetic.main.activity_popup.*
 import kotlinx.android.synthetic.main.pw_center.view.*
 
@@ -49,6 +50,39 @@ class PopupActivity: AppCompatActivity() {
         btn_popup_menu.setOnClickListener {
             showMenu()
         }
+        btn_popup_menu2.setOnClickListener {
+            val contentView = layoutInflater.inflate(R.layout.pw_menu2, null)
+            val popup = PopupWindow(contentView,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, true)
+            //对整个 popupwindow 设置背景
+            popup.showAsDropDown(btn_popup_menu2)
+        }
+        //设置阴影效果对比
+        btn_popup_shwa1.setOnClickListener {
+            Loopopup.Builder(this)
+                .build()
+                .showCenter()
+        }
+        btn_popup_shwa2.setOnClickListener {
+           Xttpopup.Builder(this)
+               .build()
+               .showCenter()
+        }
+        btn_popup_shwa3.setOnClickListener {
+            showDimPw()
+        }
+    }
+
+    private fun showDimPw() {
+        val contentView = layoutInflater.inflate(R.layout.pw_center, null)
+        val popup = PopupWindow(contentView,
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT, true)
+        popup.showAtLocation(this.window.decorView,Gravity.CENTER,0,0)
+        popup.animationStyle = R.style.AnimFadeCenter
+        //设置阴影效果,必须要在 show 以后才有效果
+        Utils.setScreenAlpha(this,popup,0.5f)
     }
 
     private fun showMenu() {
@@ -62,7 +96,7 @@ class PopupActivity: AppCompatActivity() {
 
     private fun showShawSimplePw() {
         //设置阴影
-        Utils.backgroundAlpha(this,0.5f)
+        Utils.setScreenAlpha(this,0.5f)
         val contentView = layoutInflater.inflate(R.layout.pw_center, null)
         val popup = PopupWindow()
         popup.contentView = contentView
@@ -80,7 +114,7 @@ class PopupActivity: AppCompatActivity() {
         }
         popup.setOnDismissListener {
             //去掉阴影
-            Utils.backgroundAlpha(this,1f)
+            Utils.setScreenAlpha(this,1f)
         }
     }
 

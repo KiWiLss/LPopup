@@ -9,7 +9,7 @@
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.kiwilss.lpopup.x
+package com.kiwilss.lpopup.x.normal
 
 import android.app.Activity
 import android.graphics.Typeface
@@ -145,7 +145,7 @@ class Xttpopup private constructor(builder: Builder) :
                 it.tv_pw_tt_title?.text = this
             }
             if (titleSize != 0) {
-                it.tv_pw_tt_title?.setTextSize(TypedValue.COMPLEX_UNIT_PX,titleSize.toFloat())
+                it.tv_pw_tt_title?.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleSize.toFloat())
             }
             if (titleColor != 0) {
                 it.tv_pw_tt_title?.setTextColor(titleColor)
@@ -159,7 +159,10 @@ class Xttpopup private constructor(builder: Builder) :
                 it.tv_pw_tt_subtitle?.text = this
             }
             if (subtitleSize != 0) {
-                it.tv_pw_tt_subtitle?.setTextSize(TypedValue.COMPLEX_UNIT_PX,subtitleSize.toFloat())
+                it.tv_pw_tt_subtitle?.setTextSize(
+                    TypedValue.COMPLEX_UNIT_PX,
+                    subtitleSize.toFloat()
+                )
             }
             if (subtitleColor != 0) {
                 it.tv_pw_tt_subtitle?.setTextColor(subtitleColor)
@@ -171,7 +174,7 @@ class Xttpopup private constructor(builder: Builder) :
                 it.tv_pw_tt_cancel?.text = this
             }
             if (leftSize != 0) {
-                it.tv_pw_tt_cancel?.setTextSize(TypedValue.COMPLEX_UNIT_PX,leftSize.toFloat())
+                it.tv_pw_tt_cancel?.setTextSize(TypedValue.COMPLEX_UNIT_PX, leftSize.toFloat())
             }
             if (leftColor != 0) {
                 it.tv_pw_tt_cancel?.setTextColor(leftColor)
@@ -183,7 +186,7 @@ class Xttpopup private constructor(builder: Builder) :
                 it.tv_pw_tt_sure?.text = this
             }
             if (rightSize != 0) {
-                it.tv_pw_tt_sure?.setTextSize(TypedValue.COMPLEX_UNIT_PX,rightSize.toFloat())
+                it.tv_pw_tt_sure?.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightSize.toFloat())
             }
             if (rightColor != 0) {
                 it.tv_pw_tt_sure?.setTextColor(rightColor)
@@ -199,8 +202,6 @@ class Xttpopup private constructor(builder: Builder) :
                     right(this@Xttpopup)
                 }
             }
-
-
         }
     }
 }

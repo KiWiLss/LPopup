@@ -11,6 +11,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="简单对话框"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -39,10 +40,63 @@
                 android:id="@+id/btn_popup_menu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="菜单"/>
+                android:text="菜单"
+                />
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="简单菜单样式,可以设置阴影"/>
+<!--        <Button-->
+<!--            android:id="@+id/btn_popup_menu1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="菜单1"-->
+<!--            />-->
+        <Button
+            android:id="@+id/btn_popup_menu2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="菜单2"
+            android:layout_gravity="end"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置阴影效果对比"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_popup_shwa1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置背景方式"
+                android:layout_gravity="end"
+                />
+
+            <Button
+                android:id="@+id/btn_popup_shwa2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置屏幕 alpha"
+                android:layout_gravity="end"
+                android:textAllCaps="false"
+                android:layout_marginStart="@dimen/m5"
+                android:layout_marginEnd="@dimen/m5"
+                />
+            <Button
+                android:id="@+id/btn_popup_shwa3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置dimAmount"
+                android:layout_gravity="end"
+                android:textAllCaps="false"
+                />
+        </LinearLayout>
 
 
 

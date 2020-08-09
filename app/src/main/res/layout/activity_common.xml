@@ -52,14 +52,96 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:id="@+id/btn_common_xoo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="一个标题,一个按钮"/>
+
+
+            <Button
+                android:id="@+id/btn_common_xot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="一个标题,二个按钮"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_common_xto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="二个标题,一个按钮"/>
+            <Button
                 android:id="@+id/btn_common_xtt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="二个标题,二个按钮"/>
 
-
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="任意位置对话框"/>
+        <Button
+            android:id="@+id/btn_common_gravity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="出现对话框"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_common_center"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="中间"/>
+            <Button
+                android:id="@+id/btn_common_bottom"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="下方"/>
+            <Button
+                android:id="@+id/btn_common_above"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="上方"/>
+            <Button
+                android:id="@+id/btn_common_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="左侧"/>
+            <Button
+                android:id="@+id/btn_common_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="右侧"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_common_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择头像对话框"/>
+
+            <Button
+                android:id="@+id/btn_common_head2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择头像对话框2"/>
+        </LinearLayout>
 
 
     </LinearLayout>

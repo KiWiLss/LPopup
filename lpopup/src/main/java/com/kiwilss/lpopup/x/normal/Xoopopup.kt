@@ -1,36 +1,33 @@
 /**
  * Copyright (C), 2017-2020, XXX有限公司
- * FileName: LpopupOO2
+ * FileName: Xoopopup
  * Author:   kiwilss
- * Date:     2020/8/6 21:45
+ * Date:     2020/8/9 10:47
  * Description: {DESCRIPTION}
  * History:
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.kiwilss.lpopup.popup
+package com.kiwilss.lpopup.x.normal
 
 import android.app.Activity
 import android.graphics.Typeface
 import android.util.TypedValue
-import android.view.View
 import androidx.core.content.ContextCompat
-import com.kiwilss.lpopup.BasePopup
 import com.kiwilss.lpopup.R
-import com.kiwilss.lpopup.callback.LoCallback
+import com.kiwilss.lpopup.callback.LoCallback2
+import com.kiwilss.lpopup.easy.EasyPopup
 import kotlinx.android.synthetic.main.pw_oo.view.*
-import kotlinx.android.synthetic.main.pw_ot.view.*
 
 /**
- *@FileName: LpopupOO2
+ *@FileName: Xoopopup
  *@author : Lss kiwilss
  * @e-mail : kiwilss@163.com
- * @time   : 2020/8/6
+ * @time   : 2020/8/9
  * @desc   : {DESCRIPTION}
  */
-class Loopopup private constructor(builder: Builder) :
-    BasePopup(builder.activity, builder.layoutId) {
+class Xoopopup(builder: Builder): EasyPopup(builder.activity,builder.layoutId) {
     var title: String? = null
     var titleSize: Int = 0
     var titleColor: Int = 0
@@ -40,86 +37,61 @@ class Loopopup private constructor(builder: Builder) :
     var btnSize: Int = 0
     var btnColor: Int = 0
     var btnBg: Int = 0
-    var clickCallBack: LoCallback? = null
-
-    init {
-        title = builder.title
-        titleSize = builder.titleSize
-        titleColor = builder.titleColor
-        titleIsBold = builder.titleIsBold
-        outerBg = builder.outerBg
-        btnText = builder.btnText
-        btnSize = builder.btnSize
-        btnColor = builder.btnColor
-        btnBg = builder.btnBg
-        clickCallBack = builder.clickCallBack
-    }
-
-    //对外提供获取内部控件的方法
-    //override fun getView(viewId: Int): View? = contentView?.findViewById(viewId)
+    var callback: LoCallback2? = null
 
     class Builder(val activity: Activity, val layoutId: Int = R.layout.pw_oo) {
-        var title: String? = null
-        var titleSize: Int = 0
-        var titleColor: Int = 0
-        var titleIsBold: Boolean? = null
-        var outerBg: Int = 0
-        var btnText: String? = null
-        var btnSize: Int = 0
-        var btnColor: Int = 0
-        var btnBg: Int = 0
-        var clickCallBack: LoCallback? = null
+        private val popup = Xoopopup(this)
         fun title(title: String): Builder {
-            this.title = title
+            popup.title = title
             return this
         }
 
         fun titleSize(titleSize: Int): Builder {
-            this.titleSize = activity.resources.getDimensionPixelSize(titleSize)
+            popup.titleSize = activity.resources.getDimensionPixelSize(titleSize)
             return this
         }
 
         fun titleColor(titleColor: Int): Builder {
-            this.titleColor = ContextCompat.getColor(activity, titleColor)
+            popup.titleColor = ContextCompat.getColor(activity, titleColor)
             return this
         }
 
         fun titleIsBold(titleIsBold: Boolean): Builder {
-            this.titleIsBold = titleIsBold
+            popup.titleIsBold = titleIsBold
             return this
         }
 
         fun outerBg(outerBg: Int): Builder {
-            this.outerBg = outerBg
+            popup.outerBg = outerBg
             return this
         }
 
         fun btnText(btnText: String): Builder {
-            this.btnText = btnText
+            popup.btnText = btnText
             return this
         }
 
         fun btnSize(btnSize: Int): Builder {
-            this.btnSize = activity.resources.getDimensionPixelSize(btnSize)
+            popup.btnSize = activity.resources.getDimensionPixelSize(btnSize)
             return this
         }
 
         fun btnColor(btnColor: Int): Builder {
-            this.btnColor = ContextCompat.getColor(activity, btnColor)
+            popup.btnColor = ContextCompat.getColor(activity, btnColor)
             return this
         }
 
         fun btnBg(btnBg: Int): Builder {
-            this.btnBg = btnBg
+            popup.btnBg = btnBg
             return this
         }
 
-        fun clickCallBack(clickCallBack: LoCallback): Builder {
-            this.clickCallBack = clickCallBack
+        fun callback(callback: LoCallback2): Builder {
+            popup.callback = callback
             return this
         }
 
-        fun build() = Loopopup(this)
+        fun build(): Xoopopup = popup
 
     }
 
@@ -129,7 +101,7 @@ class Loopopup private constructor(builder: Builder) :
                 it.tv_pw_oo_title?.text = this
             }
             if (titleSize != 0) {
-                it.tv_pw_oo_title?.setTextSize(TypedValue.COMPLEX_UNIT_PX,titleSize.toFloat())
+                it.tv_pw_oo_title?.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleSize.toFloat())
             }
             if (titleColor != 0) {
                 it.tv_pw_oo_title?.setTextColor(titleColor)
@@ -146,7 +118,7 @@ class Loopopup private constructor(builder: Builder) :
                 it.tv_pw_oo_sure?.text = this
             }
             if (btnSize != 0) {
-                it.tv_pw_oo_sure?.setTextSize(TypedValue.COMPLEX_UNIT_PX, btnSize.toFloat())
+                it.tv_pw_oo_sure?.setTextSize(TypedValue.COMPLEX_UNIT_PX,btnSize.toFloat())
             }
             if (btnColor != 0) {
                 it.tv_pw_oo_sure?.setTextColor(btnColor)
@@ -154,11 +126,7 @@ class Loopopup private constructor(builder: Builder) :
             if (btnBg != 0) {
                 it.tv_pw_oo_sure?.setBackgroundResource(btnBg)
             }
-            clickCallBack?.run {
-                it.tv_pw_oo_sure?.setOnClickListener {
-                    click(this@Loopopup)
-                }
-            }
+
         }
     }
 }

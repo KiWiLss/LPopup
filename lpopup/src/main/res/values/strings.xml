@@ -4,4 +4,6 @@
     <string name="hint">提示</string>
     <string name="cancel">取消</string>
     <string name="test_long">取取消取消取消取消取消取消取消取消取消取消取消取消消</string>
+    <string name="take_camera">拍照</string>
+    <string name="my_album">我的相册</string>
 </resources>
