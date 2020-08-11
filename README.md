@@ -4,14 +4,17 @@
 
   # 安卓对话框相关及简单封装使用
 
-  [使用详解](https://www.yuque.com/bibly/clwnn5/ea71od)
+  [使用详解,这个网址排版更好](https://www.yuque.com/bibly/clwnn5/ea71od)
 
   <a name="LIX4a"></a>
   ## 一、前言
   在正常使用 PopupWindow 时不是很难，只需要几行代码就能实现一个对话框，但是有很多方法都是重复的，PopupWindow 本身会有一些局限性，需要处理。在使用 PopupWindows 时，默认是没有阴影背景的，需要自己处理。仅仅使用 PopupWindow 就可以满足项目中大部分的对话框需求。但是 Dialog 也有它的优势，所以可以看具体情况选择合适的对话框。封装后，调用起来更加方便，同时对于一些高频对话框可以做成通用的，以后就不需要再重复去写，随时调用更加方便。
   <a name="I37dH"></a>
   ## 二、引入<br />
-  ![](https://cdn.nlark.com/yuque/0/2020/svg/1624725/1596989031992-38dd1265-94f7-4f85-80f5-6f505a7dc641.svg#align=left&display=inline&height=20&margin=%5Bobject%20Object%5D&originHeight=20&originWidth=91&size=0&status=done&style=none&width=91)<br />Add it in your root build.gradle at the end of repositories:
+
+  ![](https://www.jitpack.io/v/KiWiLss/LPopup.svg)
+  
+  Add it in your root build.gradle at the end of repositories:
   ```
   allprojects {
   		repositories {
@@ -910,8 +913,6 @@
                   .show(supportFragmentManager,"")
           }
   ```
-  <a name="y9LZi"></a>
-  ## 八、地址
-  [LPopup](https://github.com/KiWiLss/LPopup)<br />参考：<br />[EasyPopup（已停止维护）](https://github.com/zyyoona7/EasyPopup)<br />[Android基于DialogFragment封装一个通用的Dialog-阿里云开发者社区](https://developer.aliyun.com/article/645531)<br />[让你的Dialog变得更简洁一点吧 - 掘金](https://juejin.im/post/6844903617061715982)<br />[变种 Builder 模式：优雅的对象构建方式_张拭心的博客 shixinzhang-CSDN博客_](https://blog.csdn.net/u011240877/article/details/53248917)<br />[弹出PopupWindow后让背景变暗的方法](https://blog.nex3z.com/2016/12/04/%E5%BC%B9%E5%87%BApopupwindow%E5%90%8E%E8%AE%A9%E8%83%8C%E6%99%AF%E5%8F%98%E6%9A%97%E7%9A%84%E6%96%B9%E6%B3%95/)<br />[【Android】在任意位置弹出PopupWindow](https://www.jianshu.com/p/6c32889e6377)<br />[Gavin-ZYX/SmartPopupWindow](https://github.com/Gavin-ZYX/SmartPopupWindow)
+
 
 
