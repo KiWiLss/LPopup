@@ -70,7 +70,7 @@ class DialogTestActivity: AppCompatActivity() {
         btn_dialog_lfg.setOnClickListener {
             DefaultDialogFg().show(supportFragmentManager,"")
         }
-
+        //test
         btn_dialog_lfgset.setOnClickListener {
             SetDialogFg()
                 .show(supportFragmentManager,"")
