@@ -19,7 +19,7 @@
 
         <activity android:name=".popup.PopupActivity"/>
         <activity android:name=".common.CommonPopupActivity"/>
-
+        <activity android:name=".jtest.JavaTestActivity"/>
     </application>
 
 </manifest>

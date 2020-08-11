@@ -29,4 +29,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="常见对话框使用"/>
+
+    <Button
+        android:id="@+id/btn_main_popup3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="java中使用"/>
+
 </LinearLayout>

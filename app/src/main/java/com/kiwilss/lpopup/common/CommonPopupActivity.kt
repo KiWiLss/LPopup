@@ -12,6 +12,8 @@
 package com.kiwilss.lpopup.common
 
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +32,7 @@ import com.kiwilss.lpopup.popup.Loopopup
 import com.kiwilss.lpopup.popup.Lotpopup
 import com.kiwilss.lpopup.popup.Ltopopup
 import com.kiwilss.lpopup.popup.Lttpopup
+import com.kiwilss.lpopup.x.Xpopup
 import com.kiwilss.lpopup.x.head.XChoiceHead
 import com.kiwilss.lpopup.x.normal.Xoopopup
 import com.kiwilss.lpopup.x.normal.Xotpopup
@@ -241,7 +244,7 @@ class CommonPopupActivity : AppCompatActivity() {
                 }
 
             })
-                //.showBottom()
+            //.showBottom()
             //可以通过这个方法对内容进行修改
 //            val tvCamrea = xChoiceHead.getView(R.id.tv_pw_choice_header_take) as TextView?
 //            tvCamrea?.text = "是否拍照"
@@ -259,31 +262,55 @@ class CommonPopupActivity : AppCompatActivity() {
                 .setIsMask(false)//设置是否需要阴影,默认有阴影
                 //.setAnimStyle(R.style.AnimFadeCenter)//设置动画效果
                 //.setIsTouchOutsideDimiss()//设置点击外部是否消失,默认可以消失
-                .showAtAnchorView(btn_common_gravity,VerticalPosition.BELOW,HorizontalPosition.CENTER)
+                .showAtAnchorView(
+                    btn_common_gravity,
+                    VerticalPosition.BELOW,
+                    HorizontalPosition.CENTER
+                )
         }
         btn_common_center.setOnClickListener {
             GravityMenu(this)
-                .showAtAnchorView(btn_common_gravity,VerticalPosition.CENTER,HorizontalPosition.CENTER)
+                .showAtAnchorView(
+                    btn_common_gravity,
+                    VerticalPosition.CENTER,
+                    HorizontalPosition.CENTER
+                )
         }
         btn_common_bottom.setOnClickListener {
             GravityMenu(this)
                 .setIsMask(false)//设置是否需要阴影,默认有阴影
-                .showAtAnchorView(btn_common_gravity,VerticalPosition.BELOW,HorizontalPosition.CENTER)
+                .showAtAnchorView(
+                    btn_common_gravity,
+                    VerticalPosition.BELOW,
+                    HorizontalPosition.CENTER
+                )
         }
         btn_common_above.setOnClickListener {
             GravityMenu(this)
                 .setIsMask(false)//设置是否需要阴影,默认有阴影
-                .showAtAnchorView(btn_common_gravity,VerticalPosition.ABOVE,HorizontalPosition.CENTER)
+                .showAtAnchorView(
+                    btn_common_gravity,
+                    VerticalPosition.ABOVE,
+                    HorizontalPosition.CENTER
+                )
         }
         btn_common_left.setOnClickListener {
             GravityMenu(this)
                 .setIsMask(false)//设置是否需要阴影,默认有阴影
-                .showAtAnchorView(btn_common_gravity,VerticalPosition.CENTER,HorizontalPosition.LEFT)
+                .showAtAnchorView(
+                    btn_common_gravity,
+                    VerticalPosition.CENTER,
+                    HorizontalPosition.LEFT
+                )
         }
         btn_common_right.setOnClickListener {
             GravityMenu(this)
                 .setIsMask(false)//设置是否需要阴影,默认有阴影
-                .showAtAnchorView(btn_common_gravity,VerticalPosition.BELOW,HorizontalPosition.RIGHT)
+                .showAtAnchorView(
+                    btn_common_gravity,
+                    VerticalPosition.BELOW,
+                    HorizontalPosition.RIGHT
+                )
         }
         //下拉对话框
         btn_common_pull.setOnClickListener {
@@ -318,6 +345,41 @@ class CommonPopupActivity : AppCompatActivity() {
                 //.setIsTouchOutsideDimiss()//设置点击外部是否消失
                 .setAnimStyle(R.style.PopDownRightMenu)//设置动画
                 .showAsDropDown(btn_common_menu)
+        }
+        //Xpopup使用示例
+        btn_common_xpopup.setOnClickListener {
+            val xpopup = Xpopup.Builder(this, R.layout.pw_center)
+                .alpha(0.6f)//设置背景透明度
+                .isMask(true)//设置是否显示阴影
+                .isCancelable(true)//设置点击外部是否消失
+                .build()//获取Xpopup实例
+            xpopup.setText(R.id.tv_pw_onetitle_title, "测试")//设置文字
+                .setOnClick(R.id.tv_pw_onetitle_cancel, View.OnClickListener {
+                    xpopup.dismiss()
+                })   //设置点击事件
+                .setPopupWidth(ViewGroup.LayoutParams.WRAP_CONTENT)//设置宽度
+                .setPopupHeight(ViewGroup.LayoutParams.WRAP_CONTENT)//设置高度
+                .show()//默认渐变动画,默认显示在中间,可以在这里设置弹出位置和动画
+                //.setImageResource()//设置资源图片
+                //.showCenter()//弹出在中间,默认渐变动画
+                //.showBottom()//底部弹出,默认上推动画
+                //.showTop()//顶部弹出,默认下拉动画
+//                .setIsMask(true)//设置是否有阴影
+//                .setIsTouchOutsideDimiss(true)//设置点击外部是否消失
+//                .setBackgroundAlpha(0.5f)//设置阴影渐变度
+//                .setAnimStyle(R.style.AnimFadeCenter)//设置动画效果
+        }
+        //菜单默认下方位置
+        btn_common_xpopupMenu.setOnClickListener {
+            Xpopup.Builder(this,R.layout.pw_menu2)
+                .build()
+                .showAsDropDown(btn_common_xpopupMenu)
+        }
+        //菜单自定义位置
+        btn_common_xpopupAny.setOnClickListener {
+            Xpopup.Builder(this,R.layout.pw_menu2)
+                .build()
+                .showAtAnchorView(btn_common_xpopupAny,VerticalPosition.BELOW,HorizontalPosition.ALIGN_RIGHT)
         }
     }
 }

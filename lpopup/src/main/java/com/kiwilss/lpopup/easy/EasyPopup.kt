@@ -18,12 +18,14 @@ import android.annotation.TargetApi
 import android.app.Activity
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.SparseArray
 import android.view.*
-import android.view.View.OnTouchListener
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.PopupWindow
+import androidx.annotation.IdRes
 import androidx.core.widget.PopupWindowCompat
 import com.kiwilss.lpopup.R
+import java.lang.ref.WeakReference
 
 
 /**
@@ -36,10 +38,11 @@ import com.kiwilss.lpopup.R
 abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWindow(activity) {
 
     //宽高
+    private var mWidth2 =0
+    private var mHeight2 = 0
     private var mWidth = ViewGroup.LayoutParams.MATCH_PARENT
     private var mHeight = ViewGroup.LayoutParams.WRAP_CONTENT
-    private val mAlpha = 0.5f //背景灰度  0-1  1表示全透明
-
+    private var mAlpha = 0.5f //背景灰度  0-1  1表示全透明
     private var isMask = true//是否显示阴影,默认显示
     private var isAddGlable = false
     private var isTouchOutsideDismiss = true //点击外部消失,默认消失
@@ -69,6 +72,14 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
         setIsTouchOutsideDimiss(true)
     }
 
+    fun setPopupWidth(width: Int): EasyPopup{
+        this.mWidth2 = width
+        return this
+    }
+    fun setPopupHeight(height: Int): EasyPopup{
+        this.mHeight2 = height
+        return this
+    }
     /**设置是否精准测量
      */
     fun isAddGlable(isGable: Boolean) : EasyPopup{
@@ -91,6 +102,10 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
         return this
     }
 
+    fun setBackgroundAlpha(alpha: Float): EasyPopup{
+        this.mAlpha = alpha
+        return this
+    }
     /**
      * 设置点击外部是否消失
      */
@@ -219,6 +234,13 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
         }
         return x
     }
+    /**
+     * 默认渐变动画,默认中间弹出
+    */
+    fun show(gravity: Int = Gravity.CENTER,animStyle: Int = R.style.AnimFadeCenter){
+        animationStyle = animStyle
+        showAtLocation(activity.window.decorView, gravity, 0, 0)
+    }
 
     fun showCenter() {
         //设置渐入渐出动画
@@ -255,9 +277,16 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
         if (isMask) {
             showBackgroundAnimator()
         }
+        if (mWidth2 != 0){
+            width = mWidth2
+        }
+        if (mHeight2 != 0){
+            height = mHeight2
+        }
         if (isAddGlable) {
             addGlobalLayoutListener(contentView)
         }
+
         setInterface()
     }
 
@@ -399,8 +428,23 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
     }
 
     //对外提供获取内部控件的方法
-    fun getView(viewId: Int): View? = contentView?.findViewById(viewId)
+    fun getView2(viewId: Int): View? = contentView?.findViewById(viewId)
 
+     var mViews: SparseArray<WeakReference<View>> = SparseArray()
+
+    fun getView(@IdRes idRes: Int): View? {
+        //防止多次findViewById
+        val viewWeakReference: WeakReference<View> = mViews.get(idRes)
+        var view: View? = null
+         view = viewWeakReference.get()
+        if (null == view) {
+            view = contentView.findViewById(idRes)
+            if (null != view) {
+                mViews.put(idRes, WeakReference(view))
+            }
+        }
+        return view
+    }
     /**
      * 窗口显示，窗口背景透明度渐变动画
      */
