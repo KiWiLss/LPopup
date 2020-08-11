@@ -1,26 +1,10 @@
 # LPopup
-常用对话框整理
-PopupWindow 使用详解，常用对话框整理,如果觉得不错的话,欢迎给个 star **
-## 一,引入
-
-![](https://www.jitpack.io/v/KiWiLss/LPopup.svg)
-
-Add it in your root build.gradle at the end of repositories:
-```
-allprojects {  repositories { ...
-maven { url 'https://www.jitpack.io' }
-} }
-
-**Step 2.** Add the dependency
-
-dependencies {
- implementation 'com.github.KiWiLss:LPopup:last'
-}
-```
-
-  [使用详解](https://www.yuque.com/bibly/clwnn5/ea71od)
+常用对话框Dialog,DialogFragment,PopupWindow整理, 简单封装.
+如果觉得不错的话,欢迎给个 star **
 
   # 安卓对话框相关及简单封装使用
+
+  [使用详解](https://www.yuque.com/bibly/clwnn5/ea71od)
 
   <a name="LIX4a"></a>
   ## 一、前言
