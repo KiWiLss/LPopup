@@ -58,6 +58,9 @@ public class JavaTestActivity extends AppCompatActivity {
             }
         });
 
+//                new AlertDialog.Builder(this)
+//                        .setOnCancelListener()
+//                        .setMessage()
     }
 }
 

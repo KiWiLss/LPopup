@@ -360,26 +360,31 @@ class CommonPopupActivity : AppCompatActivity() {
                 .setPopupWidth(ViewGroup.LayoutParams.WRAP_CONTENT)//设置宽度
                 .setPopupHeight(ViewGroup.LayoutParams.WRAP_CONTENT)//设置高度
                 .show()//默认渐变动画,默认显示在中间,可以在这里设置弹出位置和动画
-                //.setImageResource()//设置资源图片
-                //.showCenter()//弹出在中间,默认渐变动画
-                //.showBottom()//底部弹出,默认上推动画
-                //.showTop()//顶部弹出,默认下拉动画
+            //.setImageResource()//设置资源图片
+            //.showCenter()//弹出在中间,默认渐变动画
+            //.showBottom()//底部弹出,默认上推动画
+            //.showTop()//顶部弹出,默认下拉动画
 //                .setIsMask(true)//设置是否有阴影
 //                .setIsTouchOutsideDimiss(true)//设置点击外部是否消失
 //                .setBackgroundAlpha(0.5f)//设置阴影渐变度
 //                .setAnimStyle(R.style.AnimFadeCenter)//设置动画效果
+            //xpopup.getView(R.id.tv_pw_onetitle_title)//通过这个方法获取对应的控件
         }
         //菜单默认下方位置
         btn_common_xpopupMenu.setOnClickListener {
-            Xpopup.Builder(this,R.layout.pw_menu2)
+            Xpopup.Builder(this, R.layout.pw_menu2)
                 .build()
                 .showAsDropDown(btn_common_xpopupMenu)
         }
         //菜单自定义位置
         btn_common_xpopupAny.setOnClickListener {
-            Xpopup.Builder(this,R.layout.pw_menu2)
+            Xpopup.Builder(this, R.layout.pw_menu2)
                 .build()
-                .showAtAnchorView(btn_common_xpopupAny,VerticalPosition.BELOW,HorizontalPosition.ALIGN_RIGHT)
+                .showAtAnchorView(
+                    btn_common_xpopupAny,
+                    VerticalPosition.BELOW,
+                    HorizontalPosition.ALIGN_RIGHT
+                )
         }
     }
 }

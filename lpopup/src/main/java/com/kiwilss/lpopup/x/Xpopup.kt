@@ -18,6 +18,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ContentView
+import androidx.annotation.DrawableRes
+import androidx.annotation.IdRes
 import com.kiwilss.lpopup.easy.EasyPopup
 import com.kiwilss.lpopup.easy.HorizontalPosition
 import com.kiwilss.lpopup.easy.VerticalPosition
@@ -33,29 +35,30 @@ class Xpopup private constructor(builder: Builder): EasyPopup(builder.activity,b
     var isMask = true
     var isCancelable = true
      var alpha = 0.5f
-     //var gravity = Gravity.CENTER
-//     var popupWidth = ViewGroup.LayoutParams.MATCH_PARENT
-//     var popupHeight = ViewGroup.LayoutParams.WRAP_CONTENT
-//     var horizontalGravity = HorizontalPosition.CENTER
-//     var verticalGravity = VerticalPosition.CENTER
     override fun setInterface() {
         //设置初始参数
         setIsMask(isMask)
         setIsTouchOutsideDimiss(isCancelable)
         setBackgroundAlpha(alpha)
     }
-    fun setText(viewId: Int, text: String) : Xpopup{
-        contentView?.findViewById<TextView>(viewId)?.run {
-            this.text = text ?: ""
+    fun setText(@IdRes viewId: Int, text: String) : Xpopup{
+        val view = getView(viewId)
+        if (view != null){
+            if (view is TextView) {
+                view.text = text
+            }
         }
         return this
     }
-    fun setOnClick(viewId: Int,listener: View.OnClickListener): Xpopup{
-        contentView?.findViewById<View>(viewId)?.setOnClickListener(listener)
+    fun setOnClick(@IdRes viewId: Int,listener: View.OnClickListener): Xpopup{
+        getView(viewId)?.setOnClickListener(listener)
         return this
     }
-    fun setImageResource(viewId: Int, resourceId: Int): Xpopup{
-        contentView?.findViewById<ImageView>(viewId)?.setImageResource(resourceId)
+    fun setImageResource(@IdRes viewId: Int, @DrawableRes resourceId: Int): Xpopup{
+        val view = getView(viewId)
+        if (view is ImageView){
+            view.setImageResource(resourceId)
+        }
         return this
     }
     class Builder(val activity: Activity,val layoutId: Int){
@@ -72,26 +75,6 @@ class Xpopup private constructor(builder: Builder): EasyPopup(builder.activity,b
             xpopup.alpha = alpha
             return this
         }
-//        fun gravity(gravity: Int): Builder{
-//            xpopup.gravity = gravity
-//            return this
-//        }
-//        fun popupWidth(popupWidth: Int): Builder{
-//            xpopup.popupWidth = popupWidth
-//            return this
-//        }
-//        fun popupHeight(popupHeight: Int): Builder{
-//            xpopup.popupHeight = popupHeight
-//            return this
-//        }
-//        fun horizontalGravity(horizontalGravity: Int): Builder{
-//            xpopup.horizontalGravity = horizontalGravity
-//            return this
-//        }
-//        fun verticalGravity(verticalGravity: Int): Builder{
-//            xpopup.verticalGravity = verticalGravity
-//            return this
-//        }
         fun build() = xpopup
     }
 }

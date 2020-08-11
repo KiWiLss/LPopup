@@ -36,4 +36,9 @@
         android:layout_height="wrap_content"
         android:text="java中使用"/>
 
+    <Button
+        android:id="@+id/btn_main_popup4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="简单Dialgo封装使用"/>
 </LinearLayout>

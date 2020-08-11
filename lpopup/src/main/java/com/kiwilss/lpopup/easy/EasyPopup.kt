@@ -18,6 +18,7 @@ import android.annotation.TargetApi
 import android.app.Activity
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.util.SparseArray
 import android.view.*
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
@@ -428,23 +429,24 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
     }
 
     //对外提供获取内部控件的方法
-    fun getView2(viewId: Int): View? = contentView?.findViewById(viewId)
+    fun getView2(@IdRes viewId: Int): View? = contentView?.findViewById(viewId)
 
-     var mViews: SparseArray<WeakReference<View>> = SparseArray()
+     private var mViews: SparseArray<WeakReference<View>?> = SparseArray()
 
     fun getView(@IdRes idRes: Int): View? {
         //防止多次findViewById
-        val viewWeakReference: WeakReference<View> = mViews.get(idRes)
+        val viewWeakReference: WeakReference<View>? = mViews.get(idRes)
         var view: View? = null
-         view = viewWeakReference.get()
-        if (null == view) {
+         view = viewWeakReference?.get()
+        if (view == null){
             view = contentView.findViewById(idRes)
-            if (null != view) {
-                mViews.put(idRes, WeakReference(view))
-            }
+        }else{
+            mViews.put(idRes, WeakReference(view))
         }
         return view
     }
+
+
     /**
      * 窗口显示，窗口背景透明度渐变动画
      */
