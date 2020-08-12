@@ -13,8 +13,7 @@
   ## 二、引入<br />
 
   ![](https://www.jitpack.io/v/KiWiLss/LPopup.svg)
-  ![](https://cdn.nlark.com/yuque/0/2020/svg/1624725/1597159755179-7a467e80-d365-4dcc-9659-58e04b190e71.svg#align=left&display=inline&height=20&margin=%5Bobject%20Object%5D&name=&originHeight=20&originWidth=91&size=0&status=done&style=none&width=91)
-  
+
   Add it in your root build.gradle at the end of repositories:
   ```
   allprojects {
