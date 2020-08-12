@@ -27,7 +27,7 @@
   **Step 2.** Add the dependency
   ```
   dependencies {
-  	        implementation 'com.github.KiWiLss:LPopup:1.0.1'
+  	        implementation 'com.github.KiWiLss:LPopup:1.0.2'
   	}
   ```
   <a name="p0Xqn"></a>
