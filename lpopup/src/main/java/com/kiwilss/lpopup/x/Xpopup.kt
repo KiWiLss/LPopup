@@ -12,6 +12,8 @@
 package com.kiwilss.lpopup.x
 
 import android.app.Activity
+import android.content.Context
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +22,8 @@ import android.widget.TextView
 import androidx.annotation.ContentView
 import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
+import androidx.core.content.ContextCompat
+import com.kiwilss.lpopup.dialog.XDialog
 import com.kiwilss.lpopup.easy.EasyPopup
 import com.kiwilss.lpopup.easy.HorizontalPosition
 import com.kiwilss.lpopup.easy.VerticalPosition
@@ -31,11 +35,15 @@ import com.kiwilss.lpopup.easy.VerticalPosition
  * @time   : 2020/8/11
  * @desc   : {DESCRIPTION}
  */
-class Xpopup private constructor(builder: Builder): EasyPopup(builder.activity,builder.layoutId) {
+class Xpopup private constructor(val builder: Builder): EasyPopup(builder.activity,builder.layoutId) {
     var isMask = true
     var isCancelable = true
      var alpha = 0.5f
+
+    private var mContext: Context? = null
+
     override fun setInterface() {
+        mContext = builder.activity
         //设置初始参数
         setIsMask(isMask)
         setIsTouchOutsideDimiss(isCancelable)
@@ -50,6 +58,29 @@ class Xpopup private constructor(builder: Builder): EasyPopup(builder.activity,b
         }
         return this
     }
+    fun setTextColor(viewId: Int, color: Int): Xpopup {
+        val tv = getView(viewId)
+        if (tv != null && mContext != null) {
+            if (tv is TextView){
+                val color1 = ContextCompat.getColor(mContext!!, color)
+                tv.setTextColor(color1)
+            }
+        }
+        return this
+    }
+
+    fun setTextSize(viewId: Int, dimension: Int): Xpopup {
+        val tv = getView(viewId)
+        if (tv != null  && mContext != null) {
+            val dimensionPixelSize: Int = mContext!!.resources.getDimensionPixelSize(dimension)
+            if (tv is TextView){
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, dimensionPixelSize.toFloat())
+            }
+        }
+        return this
+    }
+
+
     fun setOnClick(@IdRes viewId: Int,listener: View.OnClickListener): Xpopup{
         getView(viewId)?.setOnClickListener(listener)
         return this

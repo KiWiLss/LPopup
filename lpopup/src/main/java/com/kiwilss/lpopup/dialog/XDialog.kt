@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.util.SparseArray
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
+import androidx.core.content.ContextCompat
 
 /**
  * @author : Lss Administrator
@@ -36,6 +38,7 @@ class XDialog(
     private val layoutResId: Int
     private val mContentView: View
 
+    private var mContext: Context? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +64,23 @@ class XDialog(
             if (tv != null) {
                 tv.text = text
             }
+        }
+        return this
+    }
+    fun setTextColor(viewId: Int, color: Int): XDialog{
+        val tv = getView<TextView>(viewId)
+        if (tv != null && mContext != null) {
+            val color1 = ContextCompat.getColor(mContext!!, color)
+            tv.setTextColor(color1)
+        }
+        return this
+    }
+
+    fun setTextSize(viewId: Int, dimension: Int): XDialog{
+        val tv = getView<TextView>(viewId)
+        if (tv != null  && mContext != null) {
+            val dimensionPixelSize: Int = mContext!!.resources.getDimensionPixelSize(dimension)
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, dimensionPixelSize.toFloat())
         }
         return this
     }
@@ -113,8 +133,6 @@ class XDialog(
         }
 
         fun build(): XDialog {
-            Log.e("MMM", ": build" )
-            Log.e("MMM", ": build -- ${ (context == null) }")
             return XDialog( this)
         }
 
@@ -126,9 +144,8 @@ class XDialog(
         mGravity = builder.gravity
         mAnimationStyle = builder.animationStyle
         layoutResId = builder.layoutResId
-        Log.e("MMM", ": init ${ (builder.context == null) }")
-
-        mContentView = LayoutInflater.from(builder.context).inflate(layoutResId, null)
+        mContext = builder.context
+        mContentView = LayoutInflater.from(mContext).inflate(layoutResId, null)
         setContentView(mContentView)
     }
 }
