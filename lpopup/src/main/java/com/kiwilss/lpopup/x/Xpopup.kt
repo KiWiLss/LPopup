@@ -37,13 +37,19 @@ import com.kiwilss.lpopup.easy.VerticalPosition
  */
 class Xpopup private constructor(val builder: Builder): EasyPopup(builder.activity,builder.layoutId) {
     var isMask = true
+
+    /**
+     * 初始化时设置
+     */
+    override fun initInterface() {
+        mContext = builder.activity
+    }
+
     var isCancelable = true
      var alpha = 0.5f
-
     private var mContext: Context? = null
 
-    override fun setInterface() {
-        mContext = builder.activity
+    override fun showBeforeOperator() {
         //设置初始参数
         setIsMask(isMask)
         setIsTouchOutsideDimiss(isCancelable)
@@ -92,6 +98,7 @@ class Xpopup private constructor(val builder: Builder): EasyPopup(builder.activi
         }
         return this
     }
+
     class Builder(val activity: Activity,val layoutId: Int){
         private val xpopup = Xpopup(this)
         fun isMask(isMask: Boolean): Builder{

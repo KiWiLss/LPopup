@@ -139,7 +139,14 @@ class Xttpopup private constructor(builder: Builder) :
         fun build(): Xttpopup = lttpopup
     }
 
-    override fun setInterface() {
+    /**
+     * 初始化时设置,会在各种设置方法前调用
+     */
+    override fun initInterface() {
+
+    }
+
+    override fun showBeforeOperator() {
         contentView?.let {
             title?.run {
                 it.tv_pw_tt_title?.text = this

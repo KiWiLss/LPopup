@@ -24,8 +24,10 @@ import kotlinx.android.synthetic.main.pw_choice_headx.view.*
  * @desc   : {DESCRIPTION}
  */
 class XChoiceHead(activity: Activity,val callback: Callback,layoutId: Int = R.layout.pw_choice_headx): EasyPopup(activity,layoutId) {
-    override fun setInterface() {
-
+    /**
+     * 初始化时设置
+     */
+    override fun initInterface() {
         contentView?.run {
             tv_pw_choice_header_cancel?.setOnClickListener {
                 dismiss()
@@ -37,6 +39,11 @@ class XChoiceHead(activity: Activity,val callback: Callback,layoutId: Int = R.la
                 callback.album(this@XChoiceHead)
             }
         }
+    }
+
+    override fun showBeforeOperator() {
+
+
 
     }
     interface Callback{

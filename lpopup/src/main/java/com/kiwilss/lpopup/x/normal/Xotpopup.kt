@@ -121,7 +121,14 @@ class Xotpopup(builder: Builder) : EasyPopup(builder.activity, builder.layoutId)
 
     }
 
-    override fun setInterface() {
+    /**
+     * 初始化时设置,会在各种设置方法前调用
+     */
+    override fun initInterface() {
+
+    }
+
+    override fun showBeforeOperator() {
         contentView?.let {
             title?.run {
                 it.tv_pw_ot_title?.text = this

@@ -18,7 +18,6 @@ import android.annotation.TargetApi
 import android.app.Activity
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.util.Log
 import android.util.SparseArray
 import android.view.*
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
@@ -66,7 +65,13 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
         height = mHeight
         width = mWidth
         touchOutsideDismiss()
+        initInterface()
     }
+
+    /**
+     * 初始化时设置,会在各种设置方法前调用
+    */
+    abstract fun initInterface()
 
     @SuppressLint("ClickableViewAccessibility")
     private fun touchOutsideDismiss() {
@@ -272,6 +277,7 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
     /**展示之前的设置
      */
     private fun showBeforeSet() {
+        showBeforeOperator()
         if (mAnimationStyle != -1){
             animationStyle = mAnimationStyle
         }
@@ -287,8 +293,6 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
         if (isAddGlable) {
             addGlobalLayoutListener(contentView)
         }
-
-        setInterface()
     }
 
     /**
@@ -392,8 +396,10 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
         }
     }
 
-    //对界面处理
-    abstract fun setInterface()
+    /**
+     * 显示之前对界面处理和设置,会在各种设置方法后调用
+    */
+    abstract fun showBeforeOperator()
 
 
     override fun dismiss() {

@@ -14,6 +14,7 @@ package com.kiwilss.lpopup.common
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -318,7 +319,9 @@ class CommonPopupActivity : AppCompatActivity() {
                 .setAnimStyle(R.style.GrowFromTop)//设置动画
                 .setIsMask(false)//设置没有阴影
                 .setIsTouchOutsideDimiss(false)//设置点击外部不能消失
+//                .showAtAnchorView(btn_common_pull,VerticalPosition.BELOW,HorizontalPosition.CENTER)
                 .showAsDropDown(btn_common_pull)//显示在这个控件的底部
+
         }
         //basepopup 使用示例
         btn_common_base.setOnClickListener {

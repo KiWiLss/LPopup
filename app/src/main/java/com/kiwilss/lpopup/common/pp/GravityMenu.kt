@@ -23,7 +23,19 @@ import com.kiwilss.lpopup.easy.EasyPopup
  * @desc   : {DESCRIPTION}
  */
 class GravityMenu(activity: Activity,layoutId: Int = R.layout.pw_menu2): EasyPopup(activity,layoutId) {
-    override fun setInterface() {
+    /**
+     * 初始化时设置,会在各种设置方法前调用
+     */
+    override fun initInterface() {
 
     }
+
+    /**
+     * 显示之前对界面处理和设置,会在各种设置方法后调用
+     */
+    override fun showBeforeOperator() {
+
+    }
+
+
 }

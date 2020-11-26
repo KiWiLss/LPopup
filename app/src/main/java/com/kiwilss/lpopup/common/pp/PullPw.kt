@@ -26,10 +26,19 @@ import kotlinx.android.synthetic.main.pw_pull.view.*
  * @desc   : {DESCRIPTION}
  */
 class PullPw(activity: Activity, layoutId: Int = R.layout.pw_pull): EasyPopup(activity,layoutId) {
-    override fun setInterface() {
+    /**
+     * 初始化时设置,会在各种设置方法前调用
+     */
+    override fun initInterface() {
+
+    }
+
+    override fun showBeforeOperator() {
         //设置宽高,默认是只使用,要修改成下面这样
         width = ViewGroup.LayoutParams.MATCH_PARENT
-        height = ViewGroup.LayoutParams.MATCH_PARENT
+        //height = ViewGroup.LayoutParams.WRAP_CONTENT
+//        setPopupWidth(ViewGroup.LayoutParams.MATCH_PARENT)
+//        setPopupHeight(ViewGroup.LayoutParams.WRAP_CONTENT)
         contentView?.run {
             ll_pw_pull_outer.setOnClickListener {
                 dismiss()

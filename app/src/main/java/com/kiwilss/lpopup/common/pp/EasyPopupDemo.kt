@@ -24,7 +24,14 @@ import kotlinx.android.synthetic.main.pw_center.view.*
  * @desc   : {DESCRIPTION}
  */
 class EasyPopupDemo(activity: Activity,layoutId: Int = R.layout.pw_center): EasyPopup(activity,layoutId) {
-    override fun setInterface() {
+    /**
+     * 初始化时设置,会在各种设置方法前调用
+     */
+    override fun initInterface() {
+
+    }
+
+    override fun showBeforeOperator() {
         contentView?.run {
             //这里可以做获取数据,设置数据的操作,点击事件,以及对话框显示前的各种设置都可以在这里
             contentView?.run {

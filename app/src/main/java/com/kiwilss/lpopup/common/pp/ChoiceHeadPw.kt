@@ -24,8 +24,10 @@ import kotlinx.android.synthetic.main.pw_choice_head.view.*
  * @desc   : {DESCRIPTION}
  */
 class ChoiceHeadPw(activity: Activity,layoutId: Int = R.layout.pw_choice_head): EasyPopup(activity,layoutId) {
-    override fun setInterface() {
-        //这里可以初始化界面,设置数据等,设置对话框宽高,动画等都可以
+    /**
+     * 初始化时设置,会在各种设置方法前调用
+     */
+    override fun initInterface() {
         contentView?.run {
 
             tv_pw_choice_head_cancel.setOnClickListener {
@@ -34,5 +36,9 @@ class ChoiceHeadPw(activity: Activity,layoutId: Int = R.layout.pw_choice_head): 
             tv_pw_choice_head_camera.text = "选择相机"
 
         }
+    }
+
+    override fun showBeforeOperator() {
+
     }
 }

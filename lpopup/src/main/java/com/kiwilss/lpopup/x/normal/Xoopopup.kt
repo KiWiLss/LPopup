@@ -95,7 +95,14 @@ class Xoopopup(builder: Builder): EasyPopup(builder.activity,builder.layoutId) {
 
     }
 
-    override fun setInterface() {
+    /**
+     * 初始化时设置
+     */
+    override fun initInterface() {
+
+    }
+
+    override fun showBeforeOperator() {
         contentView?.let {
             title?.run {
                 it.tv_pw_oo_title?.text = this
@@ -126,7 +133,6 @@ class Xoopopup(builder: Builder): EasyPopup(builder.activity,builder.layoutId) {
             if (btnBg != 0) {
                 it.tv_pw_oo_sure?.setBackgroundResource(btnBg)
             }
-
         }
     }
 }
