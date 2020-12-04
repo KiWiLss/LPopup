@@ -42,7 +42,7 @@ class Xpopup private constructor(val builder: Builder): EasyPopup(builder.activi
      * 初始化时设置
      */
     override fun initInterface() {
-        mContext = builder.activity
+
     }
 
     var isCancelable = true
@@ -50,11 +50,13 @@ class Xpopup private constructor(val builder: Builder): EasyPopup(builder.activi
     private var mContext: Context? = null
 
     override fun showBeforeOperator() {
+        mContext = builder.activity
         //设置初始参数
         setIsMask(isMask)
         setIsTouchOutsideDimiss(isCancelable)
         setBackgroundAlpha(alpha)
     }
+
     fun setText(@IdRes viewId: Int, text: String) : Xpopup{
         val view = getView(viewId)
         if (view != null){

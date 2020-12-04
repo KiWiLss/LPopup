@@ -41,6 +41,7 @@ public class JavaTestActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 new Xpopup.Builder(JavaTestActivity.this,R.layout.pw_menu)
+                        .isMask(false)
                         .build()
                         .showAsDropDown(btnMenu);
 
