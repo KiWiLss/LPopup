@@ -9,7 +9,7 @@
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.kiwilss.lpopup
+package com.kiwilss.lpopup.popup
 
 
 import android.annotation.TargetApi
@@ -20,6 +20,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.IBinder
 import android.view.*
 import android.widget.PopupWindow
+import com.kiwilss.lpopup.R
 
 /**
  *@FileName: BasePopup
@@ -52,21 +53,21 @@ abstract class BasePopup(private val activity: Activity, layout: Int) : PopupWin
 
     //abstract fun setContent(contentView: View)
 
-    fun setAnimationStyle2(animation: Int): BasePopup{
+    fun setAnimationStyle2(animation: Int): BasePopup {
         mAnimationStyle = animationStyle
         return this
     }
-    fun setIsMask(isMask: Boolean) : BasePopup{
+    fun setIsMask(isMask: Boolean) : BasePopup {
         this.isMask = isMask
         return this
     }
 
-    fun setPopupWidth(width: Int) : BasePopup{
+    fun setPopupWidth(width: Int) : BasePopup {
         setWidth(width)
         return this
     }
 
-    fun setPopupHeight(height: Int) : BasePopup{
+    fun setPopupHeight(height: Int) : BasePopup {
         setHeight(height)
         return this
     }

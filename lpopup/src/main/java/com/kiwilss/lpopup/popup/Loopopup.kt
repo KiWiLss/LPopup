@@ -14,13 +14,10 @@ package com.kiwilss.lpopup.popup
 import android.app.Activity
 import android.graphics.Typeface
 import android.util.TypedValue
-import android.view.View
 import androidx.core.content.ContextCompat
-import com.kiwilss.lpopup.BasePopup
 import com.kiwilss.lpopup.R
 import com.kiwilss.lpopup.callback.LoCallback
 import kotlinx.android.synthetic.main.pw_oo.view.*
-import kotlinx.android.synthetic.main.pw_ot.view.*
 
 /**
  *@FileName: LpopupOO2

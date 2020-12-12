@@ -25,6 +25,7 @@ import android.widget.PopupWindow
 import androidx.annotation.IdRes
 import androidx.core.widget.PopupWindowCompat
 import com.kiwilss.lpopup.R
+import com.kiwilss.lpopup.utils.ScreenUtils
 import java.lang.ref.WeakReference
 
 
@@ -272,7 +273,15 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
         mOffsetY = y
         showBeforeSet()
         super.showAtLocation(parent, gravity, x, y)
+        showAfterSet()
     }
+
+    private fun showAfterSet() {
+        if (isMask) {
+            showBackgroundAnimator2()
+        }
+    }
+
 
     /**展示之前的设置
      */
@@ -281,9 +290,9 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
         if (mAnimationStyle != -1){
             animationStyle = mAnimationStyle
         }
-        if (isMask) {
-            showBackgroundAnimator()
-        }
+//        if (isMask) {
+//            showBackgroundAnimator()
+//        }
         if (mWidth2 != 0){
             width = mWidth2
         }
@@ -293,6 +302,11 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
         if (isAddGlable) {
             addGlobalLayoutListener(contentView)
         }
+        //setInterface()
+    }
+
+    private fun showBackgroundAnimator2() {
+        ScreenUtils.setScreenAlpha(activity,this,mAlpha)
     }
 
     /**
@@ -319,6 +333,7 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
         width = ViewGroup.LayoutParams.WRAP_CONTENT
         showBeforeSet()
         super.showAsDropDown(anchor, xoff, yoff, gravity)
+        showAfterSet()
     }
 
     /**设置在某个view固定位置上的方法
@@ -404,9 +419,9 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
 
     override fun dismiss() {
         super.dismiss()
-        if (isMask) {
-            dismissBackgroundAnimator()
-        }
+//        if (isMask) {
+//            //dismissBackgroundAnimator()
+//        }
         if (isAddGlable) {
             removeGlobalLayoutListener()
         }

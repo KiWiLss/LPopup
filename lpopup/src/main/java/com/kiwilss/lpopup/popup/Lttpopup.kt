@@ -16,7 +16,6 @@ import android.graphics.Typeface
 import android.util.TypedValue
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
-import com.kiwilss.lpopup.BasePopup
 import com.kiwilss.lpopup.R
 import com.kiwilss.lpopup.callback.LtCallback
 

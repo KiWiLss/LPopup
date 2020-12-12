@@ -16,12 +16,10 @@ import android.graphics.Typeface
 import android.util.TypedValue
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
-import com.kiwilss.lpopup.BasePopup
 import com.kiwilss.lpopup.R
 import com.kiwilss.lpopup.callback.LtCallback
 import kotlinx.android.synthetic.main.pw_oo.view.*
 import kotlinx.android.synthetic.main.pw_ot.view.*
-import kotlinx.android.synthetic.main.pw_to.view.*
 
 /**
  *@FileName: Lotpopup
