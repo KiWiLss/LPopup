@@ -18,14 +18,18 @@ import android.annotation.TargetApi
 import android.app.Activity
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.util.SparseArray
 import android.view.*
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.PopupWindow
 import androidx.annotation.IdRes
+import androidx.core.util.isEmpty
+import androidx.core.util.isNotEmpty
 import androidx.core.widget.PopupWindowCompat
 import com.kiwilss.lpopup.R
 import java.lang.ref.WeakReference
+import java.util.*
 
 
 /**
@@ -58,8 +62,10 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
     private var mHorizontalGravity = HorizontalPosition.LEFT
     private var mOffsetX = 0
     private var mOffsetY = 0
+    lateinit var mViews: SparseArray<WeakReference<View>?>
 
     init {
+        mViews = SparseArray()
         initType()
         contentView = activity.layoutInflater.inflate(layout, null)
         height = mHeight
@@ -437,7 +443,19 @@ abstract class EasyPopup(private val activity: Activity, layout: Int) : PopupWin
     //对外提供获取内部控件的方法
     fun getView2(@IdRes viewId: Int): View? = contentView?.findViewById(viewId)
 
-     private var mViews: SparseArray<WeakReference<View>?> = SparseArray()
+    fun <T: View>getViewAny(@IdRes idRes: Int): T? {
+        //防止多次findViewById
+        val viewWeakReference: WeakReference<View>? = mViews.get(idRes)
+        var view: View? = null
+        view = viewWeakReference?.get()
+        if (view == null){
+            view = contentView.findViewById(idRes)
+        }else{
+            mViews.put(idRes, WeakReference(view))
+        }
+        return view as T?
+    }
+
 
     fun getView(@IdRes idRes: Int): View? {
         //防止多次findViewById

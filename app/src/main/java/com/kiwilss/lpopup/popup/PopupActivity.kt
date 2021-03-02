@@ -19,6 +19,7 @@ import android.widget.PopupWindow
 import androidx.appcompat.app.AppCompatActivity
 import com.kiwilss.lpopup.R
 import com.kiwilss.lpopup.Utils
+import com.kiwilss.lpopup.common.pp.ListPopupDemo
 import com.kiwilss.lpopup.x.normal.Xttpopup
 import kotlinx.android.synthetic.main.activity_popup.*
 import kotlinx.android.synthetic.main.pw_center.view.*
@@ -71,6 +72,11 @@ class PopupActivity: AppCompatActivity() {
         }
         btn_popup_shwa3.setOnClickListener {
             showDimPw()
+        }
+        btnPopupTest.setOnClickListener {
+            ListPopupDemo(this)
+                .setTest()
+                .showCenter()
         }
     }
 
