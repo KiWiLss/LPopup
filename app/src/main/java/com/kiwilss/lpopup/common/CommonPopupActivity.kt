@@ -18,7 +18,7 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.kiwilss.lpopup.BasePopup
+import com.kiwilss.lpopup.popup.BasePopup
 import com.kiwilss.lpopup.R
 import com.kiwilss.lpopup.callback.LoCallback
 import com.kiwilss.lpopup.callback.LoCallback2

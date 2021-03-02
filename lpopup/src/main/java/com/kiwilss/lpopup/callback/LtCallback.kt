@@ -10,8 +10,7 @@
  */
 package com.kiwilss.lpopup.callback
 
-import com.kiwilss.lpopup.BasePopup
-import com.kiwilss.lpopup.popup.Loopopup
+import com.kiwilss.lpopup.popup.BasePopup
 
 /**
  *@FileName: OOCallback

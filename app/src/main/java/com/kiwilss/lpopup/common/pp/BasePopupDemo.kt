@@ -12,7 +12,7 @@
 package com.kiwilss.lpopup.common.pp
 
 import android.app.Activity
-import com.kiwilss.lpopup.BasePopup
+import com.kiwilss.lpopup.popup.BasePopup
 import com.kiwilss.lpopup.R
 import kotlinx.android.synthetic.main.pw_center.view.*
 

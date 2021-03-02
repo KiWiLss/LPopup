@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //
         btn_main_popup.setOnClickListener {
             startActivity(Intent(this,PopupActivity::class.java))
         }
